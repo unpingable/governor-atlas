@@ -1,0 +1,9 @@
+id: r-origin-code
+kind: code
+repo: agent_gov
+path: src/governor/cooked_context_orchestrator.py
+symbol: "def operational_admission"
+line: 270
+retrieved: 2026-06-16
+basis: "operational_admission() admits iff origin_mode in {observed} — an allowlist, not a blocklist; novel string is refused, not admitted."
+body_sha256: sha256:fcda640dc0a9ec5120fdd95ab19abaffab084f1b0fe45e57b0b8b66a3ad304b8

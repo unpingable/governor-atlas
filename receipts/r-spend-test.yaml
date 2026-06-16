@@ -1,0 +1,6 @@
+id: r-spend-test
+kind: test
+repo: agent_gov
+path: tests/test_operational_spend_fence.py
+retrieved: 2026-06-16
+basis: "20 negative pinning tests: every non-observed closed mode reaches the spend wall and is refused."

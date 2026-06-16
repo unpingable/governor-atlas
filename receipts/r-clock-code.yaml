@@ -1,0 +1,9 @@
+id: r-clock-code
+kind: code
+repo: agent_gov
+path: src/governor/clock_witness.py
+symbol: "def elapsed_ns"
+line: 102
+retrieved: 2026-06-16
+basis: "elapsed_ns() is the ONLY licensed subtraction; refuses incompatible source/epoch or backwards readings (GapBasisMismatch) rather than returning a confident garbage number."
+body_sha256: sha256:3061e0cbb4d972dcff8b0e6db1d41685a5969c74d7acdd53f12f8982b74fc7f0

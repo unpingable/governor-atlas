@@ -1,0 +1,8 @@
+id: r-standing-stub
+kind: code
+repo: agent_gov
+path: src/governor/standing_client.py
+symbol: "SPEC-honoring"
+line: 3
+retrieved: 2026-06-16
+basis: "StandingClient EXISTS but self-describes as a SPEC-honoring harness stub: no HTTP/RPC/transport. The file is real; the integration is not witnessed. spec_is_not_wired."

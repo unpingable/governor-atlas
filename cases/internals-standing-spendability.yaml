@@ -1,0 +1,90 @@
+case_id: internals-standing-spendability
+title: "Standing → Spendability: the spend wall"
+status: active
+headline: "How a governed spend gets admitted — or refused before it can spend."
+dek: >
+  The orchestrator chains admission → standing → spend. Three gates stand between an
+  agent's proposal and any operational effect. Each is wired to running code and a test,
+  names the typed refusal it emits, and carries a recorded adequacy admission.
+why: >
+  The hero specimen: every edge is `wired`, so it survives the default filter. The
+  admission says a human checked, at a pinned sha, that the cited code establishes the
+  edge — claimdocs proves the code still resolves and is unchanged, never that it suffices.
+
+nodes:
+  - { id: mod-orchestrator, type: module, label: "Cooked-context orchestrator — run()", short_label: "Orchestrator", lane: logic }
+  - { id: gate-origin-fence, type: gate, label: "Origin-mode operational fence", short_label: "Origin fence" }
+  - { id: gate-spend-wall, type: gate, label: "Operational spend wall — confer_operational_effect()", short_label: "Spend wall" }
+  - { id: gate-standing-spend, type: gate, label: "Standing-Spendability Gate (two-clock temporal lapse)", short_label: "Standing→Spend" }
+  - { id: mod-clock-witness, type: module, label: "Clock witness — elapsed_ns()", short_label: "Clock witness" }
+  - { id: store-gate-receipt, type: store, label: "Gate receipt store (content-addressed)", short_label: "Receipt store" }
+
+edges:
+  - id: e-origin
+    type: gates
+    from: gate-origin-fence
+    to: mod-orchestrator
+    claim: wired
+    receipts: [r-origin-code, r-origin-test]
+    refusal:
+      refuses: "origin_mode is not in the {observed} allowlist (recognized-but-not-observed, novel, absent, or non-str)"
+      kind: origin_not_operational
+    adequacy:
+      status: admitted
+      admitted_at: "76e79b6"
+      rationale: "operational_admission() is the only path to OperationalConsumed; allowlist semantics confirmed against the 27 pinning tests."
+  - id: e-standing
+    type: gates
+    from: gate-standing-spend
+    to: mod-orchestrator
+    claim: wired
+    receipts: [r-ss-code, r-ss-test]
+    refusal:
+      refuses: "standing observation lapsed past its horizon by exercise time (valid when observed, void when spent)"
+      kind: standing_before_spendability_not_bounded
+    adequacy:
+      status: admitted
+      admitted_at: "76e79b6"
+      rationale: "check() emits the refusal on the lapsed path; both murder-hallway paths pinned in test_standing_spendability."
+  - id: e-spend
+    type: gates
+    from: gate-spend-wall
+    to: mod-orchestrator
+    claim: wired
+    receipts: [r-spend-code, r-spend-test]
+    refusal:
+      refuses: "a non-operational consumed type — drills mechanically consume and demonstrate structure but cannot confer effect"
+      kind: "unrepresentable (isinstance wall, not a boolean guard)"
+    adequacy:
+      status: admitted
+      admitted_at: "76e79b6"
+      rationale: "confer_operational_effect() accepts only OperationalConsumed by isinstance; 20 negative tests confirm every other mode is refused."
+  - id: e-clock
+    type: calls
+    from: gate-standing-spend
+    to: mod-clock-witness
+    claim: wired
+    receipts: [r-clock-code, r-clock-test]
+    adequacy:
+      status: admitted
+      admitted_at: "76e79b6"
+      rationale: "the gate computes its gap via elapsed_ns, the only licensed subtraction; incompatible-basis refusals pinned in test_clock_witness."
+  - id: e-emit
+    type: emits
+    from: gate-standing-spend
+    to: store-gate-receipt
+    claim: wired
+    receipts: [r-receipt-store, r-ss-code]
+    adequacy:
+      status: admitted
+      admitted_at: "76e79b6"
+      rationale: "check() writes a GateReceipt to the content-addressed ReceiptStore on both admit and refuse paths."
+  # Composition fact: drills traverse the machine yet can never spend. Not a fourth gate —
+  # what e-origin and e-spend together guarantee. Derived, depth-1.
+  - id: e-drill-inert
+    type: derives
+    from: gate-origin-fence
+    to: gate-spend-wall
+    claim: derived
+    derivation: [e-origin, e-spend]
+    receipts: [r-ss-history]

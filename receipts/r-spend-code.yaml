@@ -1,0 +1,9 @@
+id: r-spend-code
+kind: code
+repo: agent_gov
+path: src/governor/cooked_context_orchestrator.py
+symbol: "def confer_operational_effect"
+line: 512
+retrieved: 2026-06-16
+basis: "confer_operational_effect() accepts only OperationalConsumed by isinstance; drills produce DemonstratedConsumed and cannot confer effect — unrepresentable, not merely guarded."
+body_sha256: sha256:545ba163c73ced33ecae21b5ecf4f01cabd594db4943450a9816e1af3938c9bf

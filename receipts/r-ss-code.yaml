@@ -1,0 +1,9 @@
+id: r-ss-code
+kind: code
+repo: agent_gov
+path: src/governor/standing_spendability.py
+symbol: "class StandingSpendabilityGate"
+line: 218
+retrieved: 2026-06-16
+basis: "check() refuses a spend whose standing observation lapsed past its horizon by exercise time (valid when observed, void when spent)."
+body_sha256: sha256:bcf2661f322bfc2f038df319044c7a28d2cba880c3a28593a733fbae1e6983b6

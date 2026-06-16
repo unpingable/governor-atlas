@@ -1,0 +1,7 @@
+id: r-ss-history
+kind: feature_history
+repo: agent_gov
+path: .claude/rules/feature-history.md
+symbol: "Standing-Spendability Gate"
+retrieved: 2026-06-16
+basis: "Feature-history entry establishing the standing->spendability seam, the typed refusal, and the drill PAIR (impostor refuses / twin passes)."

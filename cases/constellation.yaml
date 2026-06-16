@@ -1,0 +1,74 @@
+case_id: constellation
+title: "The constellation seams"
+status: active
+headline: "What Agent Governor asks of its siblings — and how little of it is wired."
+dek: >
+  Agent Governor names adapters for standing, the linear accountant, wicket, and night
+  shift. Every one of those files exists. None of the cross-repo integrations is
+  witnessed in running code on main — they self-describe as SPEC-honoring harness stubs.
+why: >
+  Turn off every layer but `wired` and this graph nearly empties. That emptiness is the
+  finding, exactly as the intake atlas's empty external_consumer region is. The seams are
+  named (honest), the integrations are not built (also honest). `spec_is_not_wired` keeps
+  the existence of a stub file from masquerading as a working seam.
+
+nodes:
+  - id: mod-ag
+    type: module
+    label: "Agent Governor (this repo)"
+    short_label: "Agent Governor"
+    lane: logic
+  - id: repo-standing
+    type: repo
+    label: "standing — workload identity / standing receipts"
+    short_label: "standing"
+  - id: repo-la
+    type: repo
+    label: "linearaccountant — capacity custody (never minted by AG)"
+    short_label: "linear accountant"
+  - id: repo-wicket
+    type: repo
+    label: "wicket — admissibility preflight kernel"
+    short_label: "wicket"
+  - id: repo-nightshift
+    type: repo
+    label: "scheduler / Night Shift — first natural dogfood"
+    short_label: "Night Shift"
+  - id: repo-nq
+    type: repo
+    label: "nq — diagnostic monitor / workload-phase witness grammar"
+    short_label: "NQ"
+
+edges:
+  - id: c-standing
+    type: requests
+    from: mod-ag
+    to: repo-standing
+    claim: specified
+    receipts: [r-standing-stub, r-zoning]
+  - id: c-la
+    type: requests
+    from: mod-ag
+    to: repo-la
+    claim: specified
+    receipts: [r-la-stub, r-zoning]
+  - id: c-wicket
+    type: requests
+    from: mod-ag
+    to: repo-wicket
+    claim: specified
+    receipts: [r-wicket-stub]
+  - id: c-nightshift
+    type: requests
+    from: mod-ag
+    to: repo-nightshift
+    claim: specified
+    receipts: [r-nightshift-adapter]
+  # NQ owns the workload-phase witness grammar; AG's mapping is a reserved name blocked
+  # on NQ's ratification. Named, not built — candidate, excluded from the default view.
+  - id: c-nq-phase
+    type: requests
+    from: mod-ag
+    to: repo-nq
+    claim: candidate
+    receipts: [r-zoning]

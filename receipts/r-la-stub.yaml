@@ -1,0 +1,8 @@
+id: r-la-stub
+kind: code
+repo: agent_gov
+path: src/governor/linear_accountant_client.py
+symbol: "SPEC-honoring harness stub"
+line: 340
+retrieved: 2026-06-16
+basis: "CapacityRequest/Consume against linearaccountant; SPEC-honoring harness stub. AG never mints from ALLOW and never regenerates from re-validation."

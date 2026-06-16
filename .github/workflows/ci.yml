@@ -1,0 +1,17 @@
+name: ci
+on: [push, pull_request]
+jobs:
+  wellformed:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: pip install pyyaml
+      # The claimdocs engine (lint/verify/render) lives in the sibling `claimdocs` repo.
+      # Until its location/visibility is settled, CI only checks the claim graph parses.
+      # Wire the real gate via ONE of: a git submodule, an editable sibling install, or a
+      # published `pip install claimdocs` — NOT a guessed URL (that would be a speculative edge).
+      - name: claim graph is well-formed YAML
+        run: |
+          python -c "import glob,yaml; [yaml.safe_load(open(f)) for f in glob.glob('cases/*.yaml')+glob.glob('receipts/*.yaml')+['claimdocs.yml']]; print('ok')"

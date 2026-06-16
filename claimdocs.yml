@@ -1,0 +1,47 @@
+# governor-atlas — the Agent Governor vocabulary pack for claimdocs.
+# This is a claimdocs CASE REPO: the engine (lint/verify/render) lives in ~/git/claimdocs.
+# Everything AG-specific is here and in cases/ + receipts/. claimdocs core knows none of it.
+project: governor-atlas
+title: "Agent Governor — claim graph"
+
+default_modes: [wired]
+witnessing_basis_kinds: [code, test, receipt_sample]
+
+claim_modes:
+  wired:     { color: "#4fc3f7", style: solid,  witnesses: true, canonical: documented,
+               help: "witnessed in running, tested code" }
+  specified: { color: "#f5a623", style: dashed,
+               help: "a spec or stub names it; not witnessed in running code (spec_is_not_wired)" }
+  derived:   { color: "#c08bff", style: dotted, requires_derivation: true,
+               help: "composition of other edges makes it so (depth-1)" }
+  candidate: { color: "#5a6068", style: dotted, excluded_from_default: true, max_per_case: 2,
+               help: "a reserved name, no forcing case yet" }
+
+basis_kinds:
+  code:            { resolvable: true, help: "file + symbol in the agent_gov tree" }
+  test:            { resolvable: true, help: "a test that exercises the edge" }
+  receipt_sample:  { help: "a real emitted gate receipt id / sample" }
+  gap_spec:        { help: "specs/gaps/*.md" }
+  working_doc:     { help: "working/*.md campaign card / decision" }
+  feature_history: { help: ".claude/rules/feature-history.md anchor" }
+  decision_doc:    { help: "docs/doctrine/decisions/*.md" }
+
+node_kinds:
+  surface:  { color: "#4fc3f7", lane: entry,         label: Surface,  what: "an entry point: CLI command, daemon RPC, hook" }
+  gate:     { color: "#ff7043", lane: admission,     label: Gate, shape: round-hexagon, what: "an authority boundary that admits or refuses", why: "the load-bearing nodes; each names the typed refusal it emits" }
+  module:   { color: "#7aa2ff", lane: logic,         label: Module,   what: "an implementation unit" }
+  store:    { color: "#5bbf6a", lane: custody, shape: round-tag, label: Store, what: "where receipts/evidence/ledger state persist" }
+  state:    { color: "#fbc02d", lane: state,         label: State,    what: "an FSM state" }
+  repo:     { color: "#c08bff", lane: constellation, label: Repo,     what: "a sibling constellation repository", why: "a seam to another system; edgeless here is honest, not hidden" }
+  doctrine: { color: "#9aa0a8", lane: admission,     label: Doctrine, what: "a spec / decision / doctrine artifact" }
+
+edge_kinds:
+  calls:    { role: flow,    verb: "calls" }
+  gates:    { role: gate,    verb: "gates", refusal_required: true }
+  emits:    { role: emit,    verb: "emits a receipt to" }
+  reads:    { role: flow,    verb: "reads" }
+  transitions: { role: flow, verb: "transitions to" }
+  requests: { role: request, verb: "requests a claim from" }
+  derives:  { role: derive,  verb: "is composed from" }
+
+lanes: [entry, admission, logic, custody, state, constellation]

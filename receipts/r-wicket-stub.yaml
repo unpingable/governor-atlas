@@ -1,0 +1,7 @@
+id: r-wicket-stub
+kind: code
+repo: agent_gov
+path: src/governor/wicket_client.py
+symbol: "WicketClient"
+retrieved: 2026-06-16
+basis: "WicketClient: admissibility preflight seam (ActorStanding, ScopeAssertion, Revocation). Adapter present; live preflight not wired on main."

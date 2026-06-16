@@ -1,0 +1,507 @@
+{
+  "nodes": [
+    {
+      "data": {
+        "id": "mod-ag",
+        "type": "module",
+        "label": "Agent Governor (this repo)",
+        "short_label": "Agent Governor",
+        "lane": "logic",
+        "rank": 2,
+        "case": "constellation"
+      }
+    },
+    {
+      "data": {
+        "id": "repo-standing",
+        "type": "repo",
+        "label": "standing \u2014 workload identity / standing receipts",
+        "short_label": "standing",
+        "lane": "constellation",
+        "rank": 5,
+        "case": "constellation"
+      }
+    },
+    {
+      "data": {
+        "id": "repo-la",
+        "type": "repo",
+        "label": "linearaccountant \u2014 capacity custody (never minted by AG)",
+        "short_label": "linear accountant",
+        "lane": "constellation",
+        "rank": 5,
+        "case": "constellation"
+      }
+    },
+    {
+      "data": {
+        "id": "repo-wicket",
+        "type": "repo",
+        "label": "wicket \u2014 admissibility preflight kernel",
+        "short_label": "wicket",
+        "lane": "constellation",
+        "rank": 5,
+        "case": "constellation"
+      }
+    },
+    {
+      "data": {
+        "id": "repo-nightshift",
+        "type": "repo",
+        "label": "scheduler / Night Shift \u2014 first natural dogfood",
+        "short_label": "Night Shift",
+        "lane": "constellation",
+        "rank": 5,
+        "case": "constellation"
+      }
+    },
+    {
+      "data": {
+        "id": "repo-nq",
+        "type": "repo",
+        "label": "nq \u2014 diagnostic monitor / workload-phase witness grammar",
+        "short_label": "NQ",
+        "lane": "constellation",
+        "rank": 5,
+        "case": "constellation"
+      }
+    },
+    {
+      "data": {
+        "id": "mod-orchestrator",
+        "type": "module",
+        "label": "Cooked-context orchestrator \u2014 run()",
+        "short_label": "Orchestrator",
+        "lane": "logic",
+        "rank": 2,
+        "case": "internals-standing-spendability"
+      }
+    },
+    {
+      "data": {
+        "id": "gate-origin-fence",
+        "type": "gate",
+        "label": "Origin-mode operational fence",
+        "short_label": "Origin fence",
+        "lane": "admission",
+        "rank": 1,
+        "case": "internals-standing-spendability"
+      }
+    },
+    {
+      "data": {
+        "id": "gate-spend-wall",
+        "type": "gate",
+        "label": "Operational spend wall \u2014 confer_operational_effect()",
+        "short_label": "Spend wall",
+        "lane": "admission",
+        "rank": 1,
+        "case": "internals-standing-spendability"
+      }
+    },
+    {
+      "data": {
+        "id": "gate-standing-spend",
+        "type": "gate",
+        "label": "Standing-Spendability Gate (two-clock temporal lapse)",
+        "short_label": "Standing\u2192Spend",
+        "lane": "admission",
+        "rank": 1,
+        "case": "internals-standing-spendability"
+      }
+    },
+    {
+      "data": {
+        "id": "mod-clock-witness",
+        "type": "module",
+        "label": "Clock witness \u2014 elapsed_ns()",
+        "short_label": "Clock witness",
+        "lane": "logic",
+        "rank": 2,
+        "case": "internals-standing-spendability"
+      }
+    },
+    {
+      "data": {
+        "id": "store-gate-receipt",
+        "type": "store",
+        "label": "Gate receipt store (content-addressed)",
+        "short_label": "Receipt store",
+        "lane": "custody",
+        "rank": 3,
+        "case": "internals-standing-spendability"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "data": {
+        "id": "c-standing",
+        "source": "mod-ag",
+        "target": "repo-standing",
+        "type": "requests",
+        "claim": "specified",
+        "case": "constellation",
+        "role": "request",
+        "receipts": [
+          {
+            "id": "r-standing-stub",
+            "kind": "code",
+            "repo": "agent_gov",
+            "path": "src/governor/standing_client.py",
+            "symbol": "SPEC-honoring",
+            "line": 3,
+            "retrieved": "2026-06-16",
+            "basis": "StandingClient EXISTS but self-describes as a SPEC-honoring harness stub: no HTTP/RPC/transport. The file is real; the integration is not witnessed. spec_is_not_wired."
+          },
+          {
+            "id": "r-zoning",
+            "kind": "working_doc",
+            "repo": "agent_gov",
+            "path": "docs/constellation-zoning.md",
+            "retrieved": "2026-06-16",
+            "basis": "Constellation zoning doctrine: which seam owns which claim, allowlist-vs-blocklist polarity, the office split across siblings."
+          }
+        ],
+        "derivation": []
+      },
+      "classes": "specified request"
+    },
+    {
+      "data": {
+        "id": "c-la",
+        "source": "mod-ag",
+        "target": "repo-la",
+        "type": "requests",
+        "claim": "specified",
+        "case": "constellation",
+        "role": "request",
+        "receipts": [
+          {
+            "id": "r-la-stub",
+            "kind": "code",
+            "repo": "agent_gov",
+            "path": "src/governor/linear_accountant_client.py",
+            "symbol": "SPEC-honoring harness stub",
+            "line": 340,
+            "retrieved": "2026-06-16",
+            "basis": "CapacityRequest/Consume against linearaccountant; SPEC-honoring harness stub. AG never mints from ALLOW and never regenerates from re-validation."
+          },
+          {
+            "id": "r-zoning",
+            "kind": "working_doc",
+            "repo": "agent_gov",
+            "path": "docs/constellation-zoning.md",
+            "retrieved": "2026-06-16",
+            "basis": "Constellation zoning doctrine: which seam owns which claim, allowlist-vs-blocklist polarity, the office split across siblings."
+          }
+        ],
+        "derivation": []
+      },
+      "classes": "specified request"
+    },
+    {
+      "data": {
+        "id": "c-wicket",
+        "source": "mod-ag",
+        "target": "repo-wicket",
+        "type": "requests",
+        "claim": "specified",
+        "case": "constellation",
+        "role": "request",
+        "receipts": [
+          {
+            "id": "r-wicket-stub",
+            "kind": "code",
+            "repo": "agent_gov",
+            "path": "src/governor/wicket_client.py",
+            "symbol": "WicketClient",
+            "retrieved": "2026-06-16",
+            "basis": "WicketClient: admissibility preflight seam (ActorStanding, ScopeAssertion, Revocation). Adapter present; live preflight not wired on main."
+          }
+        ],
+        "derivation": []
+      },
+      "classes": "specified request"
+    },
+    {
+      "data": {
+        "id": "c-nightshift",
+        "source": "mod-ag",
+        "target": "repo-nightshift",
+        "type": "requests",
+        "claim": "specified",
+        "case": "constellation",
+        "role": "request",
+        "receipts": [
+          {
+            "id": "r-nightshift-adapter",
+            "kind": "code",
+            "repo": "agent_gov",
+            "path": "src/governor/nightshift_adapter.py",
+            "symbol": "AuthorityLevel",
+            "retrieved": "2026-06-16",
+            "basis": "Night Shift Governor adapter: AuthorityLevel, BlastRadius, ToolClass, event->ReceiptRole mapping. The natural first dogfood; adapter present, loop not yet run in anger from here."
+          }
+        ],
+        "derivation": []
+      },
+      "classes": "specified request"
+    },
+    {
+      "data": {
+        "id": "e-origin",
+        "source": "gate-origin-fence",
+        "target": "mod-orchestrator",
+        "type": "gates",
+        "claim": "wired",
+        "case": "internals-standing-spendability",
+        "role": "gate",
+        "receipts": [
+          {
+            "id": "r-origin-code",
+            "kind": "code",
+            "repo": "agent_gov",
+            "path": "src/governor/cooked_context_orchestrator.py",
+            "symbol": "def operational_admission",
+            "line": 270,
+            "retrieved": "2026-06-16",
+            "basis": "operational_admission() admits iff origin_mode in {observed} \u2014 an allowlist, not a blocklist; novel string is refused, not admitted.",
+            "body_sha256": "sha256:fcda640dc0a9ec5120fdd95ab19abaffab084f1b0fe45e57b0b8b66a3ad304b8"
+          },
+          {
+            "id": "r-origin-test",
+            "kind": "test",
+            "repo": "agent_gov",
+            "path": "tests/test_origin_admission_fence.py",
+            "retrieved": "2026-06-16",
+            "basis": "27 pinning tests; the load-bearing one: a novel origin string is never admitted."
+          }
+        ],
+        "derivation": [],
+        "refusal": {
+          "refuses": "origin_mode is not in the {observed} allowlist (recognized-but-not-observed, novel, absent, or non-str)",
+          "kind": "origin_not_operational"
+        },
+        "adequacy": {
+          "status": "admitted",
+          "admitted_at": "76e79b6",
+          "rationale": "operational_admission() is the only path to OperationalConsumed; allowlist semantics confirmed against the 27 pinning tests."
+        }
+      },
+      "classes": "wired gate"
+    },
+    {
+      "data": {
+        "id": "e-standing",
+        "source": "gate-standing-spend",
+        "target": "mod-orchestrator",
+        "type": "gates",
+        "claim": "wired",
+        "case": "internals-standing-spendability",
+        "role": "gate",
+        "receipts": [
+          {
+            "id": "r-ss-code",
+            "kind": "code",
+            "repo": "agent_gov",
+            "path": "src/governor/standing_spendability.py",
+            "symbol": "class StandingSpendabilityGate",
+            "line": 218,
+            "retrieved": "2026-06-16",
+            "basis": "check() refuses a spend whose standing observation lapsed past its horizon by exercise time (valid when observed, void when spent).",
+            "body_sha256": "sha256:bcf2661f322bfc2f038df319044c7a28d2cba880c3a28593a733fbae1e6983b6"
+          },
+          {
+            "id": "r-ss-test",
+            "kind": "test",
+            "repo": "agent_gov",
+            "path": "tests/test_standing_spendability.py",
+            "retrieved": "2026-06-16",
+            "basis": "Pins both paths of the two-clock 'murder hallway': within-horizon passes, lapsed refuses with standing_before_spendability_not_bounded."
+          }
+        ],
+        "derivation": [],
+        "refusal": {
+          "refuses": "standing observation lapsed past its horizon by exercise time (valid when observed, void when spent)",
+          "kind": "standing_before_spendability_not_bounded"
+        },
+        "adequacy": {
+          "status": "admitted",
+          "admitted_at": "76e79b6",
+          "rationale": "check() emits the refusal on the lapsed path; both murder-hallway paths pinned in test_standing_spendability."
+        }
+      },
+      "classes": "wired gate"
+    },
+    {
+      "data": {
+        "id": "e-spend",
+        "source": "gate-spend-wall",
+        "target": "mod-orchestrator",
+        "type": "gates",
+        "claim": "wired",
+        "case": "internals-standing-spendability",
+        "role": "gate",
+        "receipts": [
+          {
+            "id": "r-spend-code",
+            "kind": "code",
+            "repo": "agent_gov",
+            "path": "src/governor/cooked_context_orchestrator.py",
+            "symbol": "def confer_operational_effect",
+            "line": 512,
+            "retrieved": "2026-06-16",
+            "basis": "confer_operational_effect() accepts only OperationalConsumed by isinstance; drills produce DemonstratedConsumed and cannot confer effect \u2014 unrepresentable, not merely guarded.",
+            "body_sha256": "sha256:545ba163c73ced33ecae21b5ecf4f01cabd594db4943450a9816e1af3938c9bf"
+          },
+          {
+            "id": "r-spend-test",
+            "kind": "test",
+            "repo": "agent_gov",
+            "path": "tests/test_operational_spend_fence.py",
+            "retrieved": "2026-06-16",
+            "basis": "20 negative pinning tests: every non-observed closed mode reaches the spend wall and is refused."
+          }
+        ],
+        "derivation": [],
+        "refusal": {
+          "refuses": "a non-operational consumed type \u2014 drills mechanically consume and demonstrate structure but cannot confer effect",
+          "kind": "unrepresentable (isinstance wall, not a boolean guard)"
+        },
+        "adequacy": {
+          "status": "admitted",
+          "admitted_at": "76e79b6",
+          "rationale": "confer_operational_effect() accepts only OperationalConsumed by isinstance; 20 negative tests confirm every other mode is refused."
+        }
+      },
+      "classes": "wired gate"
+    },
+    {
+      "data": {
+        "id": "e-clock",
+        "source": "gate-standing-spend",
+        "target": "mod-clock-witness",
+        "type": "calls",
+        "claim": "wired",
+        "case": "internals-standing-spendability",
+        "role": "flow",
+        "receipts": [
+          {
+            "id": "r-clock-code",
+            "kind": "code",
+            "repo": "agent_gov",
+            "path": "src/governor/clock_witness.py",
+            "symbol": "def elapsed_ns",
+            "line": 102,
+            "retrieved": "2026-06-16",
+            "basis": "elapsed_ns() is the ONLY licensed subtraction; refuses incompatible source/epoch or backwards readings (GapBasisMismatch) rather than returning a confident garbage number.",
+            "body_sha256": "sha256:3061e0cbb4d972dcff8b0e6db1d41685a5969c74d7acdd53f12f8982b74fc7f0"
+          },
+          {
+            "id": "r-clock-test",
+            "kind": "test",
+            "repo": "agent_gov",
+            "path": "tests/test_clock_witness.py",
+            "retrieved": "2026-06-16",
+            "basis": "The 'two ugly tests': a gap built from incompatible clock bases is refused, not computed."
+          }
+        ],
+        "derivation": [],
+        "adequacy": {
+          "status": "admitted",
+          "admitted_at": "76e79b6",
+          "rationale": "the gate computes its gap via elapsed_ns, the only licensed subtraction; incompatible-basis refusals pinned in test_clock_witness."
+        }
+      },
+      "classes": "wired flow"
+    },
+    {
+      "data": {
+        "id": "e-emit",
+        "source": "gate-standing-spend",
+        "target": "store-gate-receipt",
+        "type": "emits",
+        "claim": "wired",
+        "case": "internals-standing-spendability",
+        "role": "emit",
+        "receipts": [
+          {
+            "id": "r-receipt-store",
+            "kind": "code",
+            "repo": "agent_gov",
+            "path": "src/governor/gate_receipt.py",
+            "symbol": "class ReceiptStore",
+            "line": 659,
+            "retrieved": "2026-06-16",
+            "basis": "Content-addressed decision receipts; the gate emits a receipt on both admit and refuse paths.",
+            "body_sha256": "sha256:7d65be864285ecb1f1c862b790edeb2cff0495d694500c9ab8ff5f956d710b6a"
+          },
+          {
+            "id": "r-ss-code",
+            "kind": "code",
+            "repo": "agent_gov",
+            "path": "src/governor/standing_spendability.py",
+            "symbol": "class StandingSpendabilityGate",
+            "line": 218,
+            "retrieved": "2026-06-16",
+            "basis": "check() refuses a spend whose standing observation lapsed past its horizon by exercise time (valid when observed, void when spent).",
+            "body_sha256": "sha256:bcf2661f322bfc2f038df319044c7a28d2cba880c3a28593a733fbae1e6983b6"
+          }
+        ],
+        "derivation": [],
+        "adequacy": {
+          "status": "admitted",
+          "admitted_at": "76e79b6",
+          "rationale": "check() writes a GateReceipt to the content-addressed ReceiptStore on both admit and refuse paths."
+        }
+      },
+      "classes": "wired emit"
+    },
+    {
+      "data": {
+        "id": "e-drill-inert",
+        "source": "gate-origin-fence",
+        "target": "gate-spend-wall",
+        "type": "derives",
+        "claim": "derived",
+        "case": "internals-standing-spendability",
+        "role": "derive",
+        "receipts": [
+          {
+            "id": "r-ss-history",
+            "kind": "feature_history",
+            "repo": "agent_gov",
+            "path": ".claude/rules/feature-history.md",
+            "symbol": "Standing-Spendability Gate",
+            "retrieved": "2026-06-16",
+            "basis": "Feature-history entry establishing the standing->spendability seam, the typed refusal, and the drill PAIR (impostor refuses / twin passes)."
+          }
+        ],
+        "derivation": [
+          "e-origin",
+          "e-spend"
+        ]
+      },
+      "classes": "derived derive"
+    }
+  ],
+  "cases": [
+    {
+      "case_id": "constellation",
+      "title": "The constellation seams",
+      "status": "active",
+      "headline": "What Agent Governor asks of its siblings \u2014 and how little of it is wired.",
+      "dek": "Agent Governor names adapters for standing, the linear accountant, wicket, and night shift. Every one of those files exists. None of the cross-repo integrations is witnessed in running code on main \u2014 they self-describe as SPEC-honoring harness stubs.\n",
+      "why": "Turn off every layer but `wired` and this graph nearly empties. That emptiness is the finding, exactly as the intake atlas's empty external_consumer region is. The seams are named (honest), the integrations are not built (also honest). `spec_is_not_wired` keeps the existence of a stub file from masquerading as a working seam.\n"
+    },
+    {
+      "case_id": "internals-standing-spendability",
+      "title": "Standing \u2192 Spendability: the spend wall",
+      "status": "active",
+      "headline": "How a governed spend gets admitted \u2014 or refused before it can spend.",
+      "dek": "The orchestrator chains admission \u2192 standing \u2192 spend. Three gates stand between an agent's proposal and any operational effect. Each is wired to running code and a test, names the typed refusal it emits, and carries a recorded adequacy admission.\n",
+      "why": "The hero specimen: every edge is `wired`, so it survives the default filter. The admission says a human checked, at a pinned sha, that the cited code establishes the edge \u2014 claimdocs proves the code still resolves and is unchanged, never that it suffices.\n"
+    }
+  ]
+}

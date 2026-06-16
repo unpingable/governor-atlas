@@ -1,0 +1,6 @@
+id: r-origin-test
+kind: test
+repo: agent_gov
+path: tests/test_origin_admission_fence.py
+retrieved: 2026-06-16
+basis: "27 pinning tests; the load-bearing one: a novel origin string is never admitted."

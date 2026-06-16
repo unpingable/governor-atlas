@@ -1,0 +1,6 @@
+id: r-ss-test
+kind: test
+repo: agent_gov
+path: tests/test_standing_spendability.py
+retrieved: 2026-06-16
+basis: "Pins both paths of the two-clock 'murder hallway': within-horizon passes, lapsed refuses with standing_before_spendability_not_bounded."

@@ -1,0 +1,6 @@
+id: r-clock-test
+kind: test
+repo: agent_gov
+path: tests/test_clock_witness.py
+retrieved: 2026-06-16
+basis: "The 'two ugly tests': a gap built from incompatible clock bases is refused, not computed."

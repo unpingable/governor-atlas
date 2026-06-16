@@ -1,0 +1,9 @@
+id: r-receipt-store
+kind: code
+repo: agent_gov
+path: src/governor/gate_receipt.py
+symbol: "class ReceiptStore"
+line: 659
+retrieved: 2026-06-16
+basis: "Content-addressed decision receipts; the gate emits a receipt on both admit and refuse paths."
+body_sha256: sha256:7d65be864285ecb1f1c862b790edeb2cff0495d694500c9ab8ff5f956d710b6a

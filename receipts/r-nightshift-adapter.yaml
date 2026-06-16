@@ -1,0 +1,7 @@
+id: r-nightshift-adapter
+kind: code
+repo: agent_gov
+path: src/governor/nightshift_adapter.py
+symbol: "AuthorityLevel"
+retrieved: 2026-06-16
+basis: "Night Shift Governor adapter: AuthorityLevel, BlastRadius, ToolClass, event->ReceiptRole mapping. The natural first dogfood; adapter present, loop not yet run in anger from here."

@@ -1,0 +1,159 @@
+{
+  "project": "governor-atlas",
+  "title": "Agent Governor \u2014 claim graph",
+  "lanes": [
+    {
+      "id": "entry",
+      "label": "Entry"
+    },
+    {
+      "id": "admission",
+      "label": "Admission"
+    },
+    {
+      "id": "logic",
+      "label": "Logic"
+    },
+    {
+      "id": "custody",
+      "label": "Custody"
+    },
+    {
+      "id": "state",
+      "label": "State"
+    },
+    {
+      "id": "constellation",
+      "label": "Constellation"
+    }
+  ],
+  "default_modes": [
+    "wired"
+  ],
+  "claim_modes": {
+    "wired": {
+      "color": "#4fc3f7",
+      "style": "solid",
+      "witnesses": true,
+      "excluded_from_default": false,
+      "help": "witnessed in running, tested code",
+      "canonical": "documented",
+      "wording": "is witnessed as"
+    },
+    "specified": {
+      "color": "#f5a623",
+      "style": "dashed",
+      "witnesses": false,
+      "excluded_from_default": false,
+      "help": "a spec or stub names it; not witnessed in running code (spec_is_not_wired)",
+      "canonical": "specified",
+      "wording": "is specified as"
+    },
+    "derived": {
+      "color": "#c08bff",
+      "style": "dotted",
+      "witnesses": false,
+      "excluded_from_default": false,
+      "help": "composition of other edges makes it so (depth-1)",
+      "canonical": "derived",
+      "wording": "is derived from"
+    },
+    "candidate": {
+      "color": "#5a6068",
+      "style": "dotted",
+      "witnesses": false,
+      "excluded_from_default": true,
+      "help": "a reserved name, no forcing case yet",
+      "canonical": "candidate",
+      "wording": "is a candidate relation"
+    }
+  },
+  "node_kinds": {
+    "surface": {
+      "color": "#4fc3f7",
+      "label": "Surface",
+      "shape": "round-rectangle",
+      "lane": "entry",
+      "what": "an entry point: CLI command, daemon RPC, hook",
+      "why": ""
+    },
+    "gate": {
+      "color": "#ff7043",
+      "label": "Gate",
+      "shape": "round-hexagon",
+      "lane": "admission",
+      "what": "an authority boundary that admits or refuses",
+      "why": "the load-bearing nodes; each names the typed refusal it emits"
+    },
+    "module": {
+      "color": "#7aa2ff",
+      "label": "Module",
+      "shape": "round-rectangle",
+      "lane": "logic",
+      "what": "an implementation unit",
+      "why": ""
+    },
+    "store": {
+      "color": "#5bbf6a",
+      "label": "Store",
+      "shape": "round-tag",
+      "lane": "custody",
+      "what": "where receipts/evidence/ledger state persist",
+      "why": ""
+    },
+    "state": {
+      "color": "#fbc02d",
+      "label": "State",
+      "shape": "round-rectangle",
+      "lane": "state",
+      "what": "an FSM state",
+      "why": ""
+    },
+    "repo": {
+      "color": "#c08bff",
+      "label": "Repo",
+      "shape": "round-rectangle",
+      "lane": "constellation",
+      "what": "a sibling constellation repository",
+      "why": "a seam to another system; edgeless here is honest, not hidden"
+    },
+    "doctrine": {
+      "color": "#9aa0a8",
+      "label": "Doctrine",
+      "shape": "round-rectangle",
+      "lane": "admission",
+      "what": "a spec / decision / doctrine artifact",
+      "why": ""
+    }
+  },
+  "edge_kinds": {
+    "calls": {
+      "role": "flow",
+      "verb": "calls"
+    },
+    "gates": {
+      "role": "gate",
+      "verb": "gates"
+    },
+    "emits": {
+      "role": "emit",
+      "verb": "emits a receipt to"
+    },
+    "reads": {
+      "role": "flow",
+      "verb": "reads"
+    },
+    "transitions": {
+      "role": "flow",
+      "verb": "transitions to"
+    },
+    "requests": {
+      "role": "request",
+      "verb": "requests a claim from"
+    },
+    "derives": {
+      "role": "derive",
+      "verb": "is composed from"
+    }
+  }
+}
