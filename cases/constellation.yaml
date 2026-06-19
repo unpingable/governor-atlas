@@ -6,6 +6,9 @@ dek: >
   Agent Governor names adapters for standing, the linear accountant, wicket, and night
   shift. Every one of those files exists. None of the cross-repo integrations is
   witnessed in running code on main — they self-describe as SPEC-honoring harness stubs.
+  A second wave of asks (clock witnesses for standing/NQ, projection receipts for
+  continuity) is doctrine filed in the siblings' own repos — specified or candidate,
+  never wired.
 why: >
   Turn off every layer but `wired` and this graph nearly empties. That emptiness is the
   finding, exactly as the intake atlas's empty external_consumer region is. The seams are
@@ -38,6 +41,10 @@ nodes:
     type: repo
     label: "nq — diagnostic monitor / workload-phase witness grammar"
     short_label: "NQ"
+  - id: repo-continuity
+    type: repo
+    label: "continuity — governed cross-session memory (the medium, not a witness)"
+    short_label: "continuity"
 
 edges:
   - id: c-standing
@@ -72,3 +79,27 @@ edges:
     to: repo-nq
     claim: candidate
     receipts: [r-zoning]
+  # Clock-witness invariant (2026-06-18): governed time comparisons run on declared clock
+  # witnesses, not bare timestamps. AG's seed is wired (clock_witness.py); the cross-repo
+  # asks are named in the siblings' own candidate docs — specified, not witnessed there.
+  - id: c-cw-standing
+    type: requests
+    from: mod-ag
+    to: repo-standing
+    claim: specified
+    receipts: [r-cw-standing, r-cw-invariant]
+  - id: c-cw-nq
+    type: requests
+    from: mod-ag
+    to: repo-nq
+    claim: specified
+    receipts: [r-cw-nq, r-cw-invariant]
+  # Projection receipts (2026-06-18): AG asks continuity to witness semantic reads
+  # (stored-is-not-true). A reserved name with no live forcing case — candidate. This
+  # spends the case's second and last candidate slot (with c-nq-phase).
+  - id: c-proj-continuity
+    type: requests
+    from: mod-ag
+    to: repo-continuity
+    claim: candidate
+    receipts: [r-proj-continuity]

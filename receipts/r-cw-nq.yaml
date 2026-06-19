@@ -1,0 +1,6 @@
+id: r-cw-nq
+kind: working_doc
+repo: nq
+path: docs/working/decisions/CLOCK_WITNESS_PRIMITIVE_CANDIDATE.md
+retrieved: 2026-06-19
+basis: "NQ's local first-home Rust candidate for the clock-witness primitive (opaque ClockInstant with no public arithmetic, basis-aware LicensedGap Temporal/Sequential, ClockRefusal enum). Grounded in the TimeBasisAnnotation scar at nq-core/src/preflight.rs:309 (promotion, not invention). Named in a spec doc; not witnessed cross-repo. spec_is_not_wired."

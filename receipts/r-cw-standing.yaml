@@ -1,0 +1,6 @@
+id: r-cw-standing
+kind: working_doc
+repo: standing
+path: docs/standing-clock-witness-candidate.md
+retrieved: 2026-06-19
+basis: "Standing's clock-witness candidate: expose observed/exercise clock witnesses + basis compatibility, with the anti-mechanization fence (no private-mint standing verdict; standing gets the measuring stick, not the guillotine). Filed 2026-06-18, AG-authorized. Named in a spec doc; not witnessed cross-repo. spec_is_not_wired."

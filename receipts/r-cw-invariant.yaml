@@ -1,0 +1,6 @@
+id: r-cw-invariant
+kind: working_doc
+repo: agent_gov
+path: docs/cross-tool/clock-witness-cross-constellation-note.md
+retrieved: 2026-06-19
+basis: "The cross-constellation invariant: governed time comparisons run on declared clock witnesses, not bare timestamps; unknown/incompatible basis refuses (does not collapse to PASS). AG-internal seed is wired (clock_witness.py + standing_spendability.py); cross-repo adoption is specified, per-office, forcing-case-gated. AG-authorized, non-binding."

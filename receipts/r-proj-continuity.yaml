@@ -1,0 +1,6 @@
+id: r-proj-continuity
+kind: working_doc
+repo: continuity
+path: docs/candidates/PROJECTION_RECEIPT.md
+retrieved: 2026-06-19
+basis: "AG asks continuity to witness semantic reads via ProjectionReceipt — a read is a witnessed claim, not a resurrection of stored truth (stored-is-not-true; signed-is-not-witnessed one layer up). Candidate / non-binding; the doc's own graduation triggers state no forcing case is live. Same failure class as claimdocs's own transitive drift: cited-fresh does not imply closure-fresh."
