@@ -4,7 +4,7 @@
 specimen and its proposed constellation interfaces, represented as a typed,
 receipt-backed claim graph for [claimdocs](https://github.com/unpingable/claimdocs).**
 
-This is not a complete map of current Agent Governor NG or of the current
+This is not a complete map of current [Constellation AG](https://github.com/unpingable/constellation-ag) or of the current
 Constellation topology. It records a narrow classic-AG standing/spendability
 boundary and a second case of requested cross-repository interfaces.
 
